@@ -1,0 +1,15 @@
+name: Update docs
+
+on:
+  push:
+    branches:
+      - 'main'
+    paths:
+      - 'packages/docs/**'
+
+jobs:
+  test_shit:
+    steps: 
+      - name: 'Log'
+        run: echo 'hello'
+  
