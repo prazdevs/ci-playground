@@ -6,6 +6,9 @@ on:
       - 'main'
     paths:
       - 'docs/**'
+  pull_request:
+    paths:
+      - 'docs/**'
   workflow_dispatch:
     branches:
       - 'main'
@@ -51,9 +54,11 @@ jobs:
       - name: Log
         run: echo ${{ github.event_name }}
 
-      # TODO activate this
-      # - name: Deploy docs
-      #   uses: peaceiris/actions-gh-pages@v3
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     publish_dir: docs/.vitepress/dist
+      TODO activate this
+      - name: Deploy docs
+        if: ${{ github.event_name != 'pull_request' }}
+        run: echo 'hello'
+        # uses: peaceiris/actions-gh-pages@v3
+        # with:
+        #   github_token: ${{ secrets.GITHUB_TOKEN }}
+        #   publish_dir: docs/.vitepress/dist
