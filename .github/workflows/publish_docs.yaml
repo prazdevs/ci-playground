@@ -9,6 +9,7 @@ on:
 
 jobs:
   test_shit:
+    runs-on: ubuntu-latest
     steps: 
       - name: 'Log'
         run: echo 'hello'
