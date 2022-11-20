@@ -12,6 +12,11 @@ on:
   workflow_dispatch:
     branches:
       - 'main'
+    input:
+      deploy:
+        required: true
+        default: false
+        type: boolean
 
 jobs:
   publish_docs:
@@ -51,13 +56,10 @@ jobs:
       - name: Build docs
         run: pnpm run docs:build
 
-      - name: Log
-        run: echo ${{ github.event_name }}
-
      # TODO activate this
       - name: Deploy docs
-        if: ${{ github.event_name != 'pull_request' }}
-        run: echo 'hello'
+        if: ${{ github.event_name == 'push' || inputs.deploy }}
+        run: echo 'DEPLOYED'
         # uses: peaceiris/actions-gh-pages@v3
         # with:
         #   github_token: ${{ secrets.GITHUB_TOKEN }}
