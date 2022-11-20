@@ -1,4 +1,4 @@
-name: Publish docs
+name: Docs
 
 on:
   push:
@@ -20,8 +20,8 @@ on:
         type: boolean
 
 jobs:
-  publish_docs:
-    name: Publish docs
+  docs:
+    name: Docs
     runs-on: ubuntu-latest
     steps: 
       - name: Checkout
@@ -57,11 +57,10 @@ jobs:
       - name: Build docs
         run: pnpm run docs:build
 
-     # TODO activate this
-      - name: Deploy docs
-        if: ${{ github.event_name == 'push' || inputs.deploy }}
-        run: echo 'DEPLOYED'
-        # uses: peaceiris/actions-gh-pages@v3
-        # with:
-        #   github_token: ${{ secrets.GITHUB_TOKEN }}
-        #   publish_dir: docs/.vitepress/dist
+      # TODO activate this
+      # - name: Deploy docs
+      #   if: ${{ github.event_name == 'push' || inputs.deploy }}
+      #   uses: peaceiris/actions-gh-pages@v3
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     publish_dir: docs/.vitepress/dist
