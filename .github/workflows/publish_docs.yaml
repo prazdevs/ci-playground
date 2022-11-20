@@ -6,13 +6,16 @@ on:
       - 'main'
     paths:
       - 'docs/**'
+  workflow_dispatch:
 
 jobs:
   publish_docs:
+    on: 
+    name: Publish docs
     runs-on: ubuntu-latest
     steps: 
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -43,3 +46,5 @@ jobs:
 
       - name: Build docs
         run: pnpm run docs:build
+
+    # TODO publish
