@@ -48,4 +48,12 @@ jobs:
       - name: Build docs
         run: pnpm run docs:build
 
-    # TODO publish
+      - name: Log
+        run: echo ${{ github.action }}
+
+      # TODO activate this
+      # - name: Deploy docs
+      #   uses: peaceiris/actions-gh-pages@v3
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     publish_dir: docs/.vitepress/dist
