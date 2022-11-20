@@ -20,6 +20,6 @@ features:
   - title: Highly customizable
     details: Custom storage, custom serializer, paths picking  and other options per-store.
   - title: Usable everywhere
-    details: Compatible with Vue 2 and 3, Nuxt (SSR), and everything that can use Pinia.
+    details: Compatible with everything that can run Pinia.
 ---
 
