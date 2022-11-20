@@ -18,7 +18,7 @@ export default defineConfig({
     logo: '/logo.png',
     footer: {
       message: 'Released under the MIT License.',
-      copyright: `Copyright © 2021-${new Date().getFullYear()} Sacha Bouillez & contributors`,
+      copyright: `Copyright © 2021-${new Date().getFullYear()} prazdevs & contributors`,
     },
     editLink: {
       pattern: 'https://github.com/prazdevs/pinia-plugin-persistedstate/edit/main/docs/:path',
