@@ -12,7 +12,6 @@ on:
 
 jobs:
   publish_docs:
-    on: 
     name: Publish docs
     runs-on: ubuntu-latest
     steps: 
