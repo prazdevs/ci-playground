@@ -10,8 +10,6 @@ on:
     paths:
       - 'docs/**'
   workflow_dispatch:
-    branches:
-      - 'main'
     input:
       deploy:
         description: 'Deploy ?'
