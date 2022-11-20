@@ -49,7 +49,7 @@ jobs:
         run: pnpm run docs:build
 
       - name: Log
-        run: echo ${{ github.action }}
+        run: echo ${{ toJSON(github.event) }}
 
       # TODO activate this
       # - name: Deploy docs
