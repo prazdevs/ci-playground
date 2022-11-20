@@ -1,4 +1,4 @@
-name: Update docs
+name: Publish docs
 
 on:
   push:
@@ -8,9 +8,38 @@ on:
       - 'packages/docs/**'
 
 jobs:
-  test_shit:
+  publish_docs:
     runs-on: ubuntu-latest
     steps: 
-      - name: 'Log'
-        run: echo 'hello'
-  
+      - name: Checkout
+        use: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install pnpm
+        id: pnpm-install
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7
+          run_install: false
+
+      - name: Get pnpm store
+        id: pnpm-store
+        shell: bash
+        run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.pnpm-store.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm i --frozen-lockfile
+
+      - name: Build docs
+        run: pnpm run docs:build
